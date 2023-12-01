@@ -1,0 +1,72 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+window:
+  dimensions:
+    columns: 90
+    lines: 25
+  position:
+    x: 380
+    y: 100
+  padding:
+    x: 40
+    y: 30
+  opacity: 1
+  startup_mode: Windowed
+
+  title: Alacritty
+
+  dynamic_title: false
+
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+font:
+  normal:
+    family: Cascadia Code
+    style: Regular
+  bold:
+    family: Cascadia Code
+    style: Bold
+  italic:
+    family: Cascadia Code
+    style: Italic
+  bold_italic:
+    family: Cascadia Mono
+    style: Bold Italic
+  size: 12
+  offset:
+    x: 1
+    y: 6
+  builtin_box_drawing: true
+
+colors:
+  primary:
+    background: '#2D2A2E'
+    foreground: '#f5ebe0'
+  selection:
+    text: '#6d6875'
+    background: CellForeground
+  normal:
+    black:   '#000000'
+    red:     '#ff595e'
+    green:   '#74a892'
+    yellow:  '#fbf2c4'
+    blue:    '#38638b'
+    magenta: '#faaac7'
+    cyan:    '#abc4ff'
+    white:   '#f5ebe0'
+
+cursor:
+  style:
+    shape: Underline
+    blinking: On
+
+key_bindings:
+  - { key: T,         mods: Control|Shift,               action: SpawnNewInstance }
+  - { key: Back,	      mods: Control,                     chars: "\x1b\x7f" }
+  - { key: Back,	  mods: Control,       mode: ~Vi,         chars: "\u0017" }
