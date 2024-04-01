@@ -1,6 +1,5 @@
 {
   "workbench.colorTheme": "Monokai Pro",
-  "workbench.iconTheme": "Monokai Pro Icons",
   "editor.fontWeight": "350",
   "editor.fontFamily": "Cascadia Code",
   "editor.fontLigatures": "'calt', 'ss01'",
@@ -89,7 +88,6 @@
     }
   },
 
-  // ---------- VIM -----------
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
   "vim.hlsearch": true,
@@ -173,5 +171,12 @@
     { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
     { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] },
     { "before": ["i"], "after": ["<Esc>", "i"] }
-  ]
+  ],
+  "workbench.iconTheme": "gruvbox-material-icon-theme",
+  "[kotlin]": {
+    "editor.defaultFormatter": "fwcd.kotlin"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

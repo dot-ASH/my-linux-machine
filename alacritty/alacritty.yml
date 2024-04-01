@@ -1,6 +1,4 @@
-# Configuration for Alacritty, the GPU enhanced terminal emulator.
-
-window:
+Window:
   dimensions:
     columns: 90
     lines: 25
@@ -46,20 +44,20 @@ font:
 
 colors:
   primary:
-    background: '#2D2A2E'
-    foreground: '#f5ebe0'
+    background: "#2D2A2E"
+    foreground: "#f5ebe0"
   selection:
-    text: '#6d6875'
+    text: "#6d6875"
     background: CellForeground
   normal:
-    black:   '#000000'
-    red:     '#ff595e'
-    green:   '#74a892'
-    yellow:  '#fbf2c4'
-    blue:    '#38638b'
-    magenta: '#faaac7'
-    cyan:    '#abc4ff'
-    white:   '#f5ebe0'
+    black: "#000000"
+    red: "#ff595e"
+    green: "#74a892"
+    yellow: "#fbf2c4"
+    blue: "#38638b"
+    magenta: "#faaac7"
+    cyan: "#abc4ff"
+    white: "#f5ebe0"
 
 cursor:
   style:
@@ -67,6 +65,6 @@ cursor:
     blinking: On
 
 key_bindings:
-  - { key: T,         mods: Control|Shift,               action: SpawnNewInstance }
-  - { key: Back,	      mods: Control,                     chars: "\x1b\x7f" }
-  - { key: Back,	  mods: Control,       mode: ~Vi,         chars: "\u0017" }
+  - { key: T, mods: Control|Shift, action: SpawnNewInstance }
+  - { key: Back, mods: Control, chars: "\x1b\x7f" }
+  - { key: Back, mods: Control, mode: ~Vi, chars: "\u0017" }
