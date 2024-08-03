@@ -58,8 +58,9 @@
   display: none;
 }
 
-.part.sidebar {
-  gap: 2rem !important;
+.monaco-list-rows {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
 }
 
 /* File Explorer Item Label */
@@ -69,6 +70,12 @@
   font-size: 11px !important;
   font-weight: 400 !important;
   color: #fff !important;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.monaco-scrollable-element {
+  outline: none !important;
 }
 
 /* Sidebar top shadow */
@@ -103,8 +110,12 @@
   position: absolute !important;
   right: 1px !important;
   width: 1px !important;
-  background: #bc9abc !important;
+  background: transparent !important;
   left: auto !important;
+}
+
+.slider:hover {
+  background: #bc9abc !important;
 }
 
 .codicon-toolbar-more,
@@ -119,12 +130,16 @@
   padding: 10px !important;
   background-image: #2d2a2e !important;
   backdrop-filter: blur(3px) !important;
-  border-radius: 20px !important;
+  border-radius: 10px !important;
   border: none !important;
 }
 
 .pane-header {
   box-shadow: none !important;
+}
+
+.part, .content, .split-view-view {
+  height: 100% !important;
 }
 
 /* Project title's style at the top. */
