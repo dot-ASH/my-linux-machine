@@ -13,22 +13,41 @@ return {
     end,
   },
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
-  --
-  -- {
-  --   "nvim-tree/nvim-tree.lua",
-  --   opts = {
-  --     view = {
-  --       side = "right",
-  --     },
-  --   },
-  -- },
+  {
+    "charludo/projectmgr.nvim",
+    lazy = false, -- important!
+  },
+
+  {
+    "charludo/projectmgr.nvim",
+    lazy = false, -- important!
+    config = function()
+      require("projectmgr").setup {
+        -- autogit = {
+        --   enabled = true,
+        --   command = "git pull --ff-only > .git/fastforward.log 2>&1",
+        -- },
+        session = { enabled = true, file = ".git/Session.vim" },
+      }
+    end,
+  },
+  {
+    "toppair/peek.nvim",
+    build = "deno task --quiet build:fast",
+    keys = {
+      {
+        "<leader>op",
+        function()
+          local peek = require "peek"
+          if peek.is_open() then
+            peek.close()
+          else
+            peek.open()
+          end
+        end,
+        desc = "Peek (Markdown Preview)",
+      },
+    },
+    opts = { theme = "dark", app = "browser" },
+  },
 }
