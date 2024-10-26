@@ -1,12 +1,10 @@
 require "nvchad.mappings"
 
 -- add yours here
-
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jj", "<ESC>")
-
 map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
 
 -- Undo in insert mode
@@ -21,11 +19,14 @@ map("n", "<leader>E", "<cmd>NvimTreeFocus<CR>", { desc = "Toggle NvimTree" })
 
 map("n", "<leader>q", "<leader>x", { desc = "Close Buffer" })
 
+map("n", "<A-Up>", "<CMD>m -2<CR>")
+
+map("n", "<A-Down>", "<CMD>m +1<CR>")
+
 -- Projects
 map("n", "<leader>fp", "<CMD> ProjectMgr<CR>", { desc = "Open Projects" })
 
 -- Insert Navigation
-
 map("i", "<C-CR>", "<Esc>o", { desc = "New Line in Insert Mode", noremap = true, silent = true })
 
 map("i", "<C-v>", "<Esc>v")
@@ -33,3 +34,11 @@ map("i", "<C-v>", "<Esc>v")
 map("i", "<A-Up>", "<CMD>m -2<CR>")
 
 map("i", "<A-Down>", "<CMD>m +1<CR>")
+
+map("i", "<C-S-i>", "<Esc><leader>fm")
+
+map("i", "<C-s>", "<Esc><Cmd>w<CR>")
+
+map("i", "<C-Delete>", "<Esc>dei", { noremap = true, silent = true })
+
+map("n", "<C-z>", "<nop>", { desc = "Disable Ctrl+Z in normal mode", noremap = true, silent = true })
