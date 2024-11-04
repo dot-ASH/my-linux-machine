@@ -6,6 +6,7 @@ local options = {
     javascript = { "prettier" },
     typescript = { "prettier" },
     python = { "black" },
+    json = { "prettier" },
   },
 
   format_on_save = {

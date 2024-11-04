@@ -15,6 +15,7 @@ return {
       return require "configs.null-ls"
     end,
   },
+
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -40,6 +41,7 @@ return {
       }
     end,
   },
+
   {
     "williamboman/mason.nvim",
     opts = {
@@ -56,6 +58,7 @@ return {
       },
     },
   },
+
   {
     "windwp/nvim-ts-autotag",
     ft = {
@@ -68,6 +71,45 @@ return {
     config = function()
       require("nvim-ts-autotag").setup()
     end,
+  },
+
+  -- Add ts-context-commentstring to support JSX comments
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    lazy = true, -- loads automatically as a dependency
+  },
+
+  -- Configure Comment.nvim to use ts-context-commentstring in JSX files
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup {
+        toggler = {
+          line = "gcc", -- line-comment key mapping
+          block = "gbc", -- block-comment key mapping
+        },
+        opleader = {
+          line = "gc",
+          block = "gb",
+        },
+        pre_hook = function(ctx)
+          local U = require "Comment.utils"
+          local ts_utils = require "ts_context_commentstring.utils"
+          local ts_internal = require "ts_context_commentstring.internal"
+
+          -- Enable JSX comment support
+          if vim.bo.filetype == "typescriptreact" or vim.bo.filetype == "javascriptreact" then
+            local location = ts_utils.get_cursor_location()
+            return ts_internal.calculate_commentstring {
+              key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
+              location = location,
+            }
+          end
+        end,
+      }
+    end,
+    keys = { "gc", "gcc", "gbc" }, -- load when these keys are pressed
+    event = "BufRead", -- load on buffer read (optional)
   },
 
   {
