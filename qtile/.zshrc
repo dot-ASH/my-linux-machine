@@ -53,7 +53,7 @@ alias cnm='cd /mnt/sda6/Movies'
 alias projects='/mnt/B0901BA8901B73D6/productivity-nd-duh/Projects'
 alias porto='/mnt/B0901BA8901B73D6/productivity-nd-duh/Projects/portfolio'
 alias android-studio='/opt/android-studio/bin/studio'
-# alias emu='emulator -avd Pixel_4_API_34'
+alias emu='$ANDROID_HOME/emulator/emulator -avd Medium_Phone_API_35'
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"

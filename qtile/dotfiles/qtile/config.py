@@ -340,6 +340,17 @@ screens = [
                     fontsize=15,
                     update_interval=5,
                 ),
+                widget.Spacer(
+                    length=8,
+                    background=bg,
+                ),
+                widget.Net(
+                    format="↑ {down:.1f}{down_suffix}",
+                    background=bg,
+                    font=font_main_bold,
+                    fontsize=15,
+                    foreground=text,
+                ),
                 widget.Image(
                     filename="~/.config/qtile/Assets/2.png",
                 ),

@@ -7,7 +7,7 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
 map("n", "<leader>E", "<cmd>NvimTreeFocus<CR>", { desc = "Focus NvimTree" })
-map("n", "<leader>q", "<leader>x", { desc = "Close Buffer" })
+map("n", "<leader>q", ":q<CR>", { desc = "Close a Window", noremap = true, silent = true })
 map("n", "<A-Up>", "<CMD>m -2<CR>", { desc = "Move line up" })
 map("n", "<A-Down>", "<CMD>m +1<CR>", { desc = "Move line down" })
 map("n", "<C-z>", "<nop>", { desc = "Disable Ctrl+Z in normal mode", noremap = true, silent = true })
