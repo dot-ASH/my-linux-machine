@@ -14,3 +14,13 @@ sudo snap install neovim
 pip install dbus-next psutil
 
 ```
+
+```
+# FONTS
+
+- CaskadiyanCove Nerd
+- FiraCode Nerd
+- Liga SFMono Nerd Font SemiBold
+# https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized
+
+```

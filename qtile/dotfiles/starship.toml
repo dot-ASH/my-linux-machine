@@ -7,24 +7,30 @@ $git_state\
 $git_status\
 $cmd_duration\
 $line_break\
+$line_break\
 $python\
 $character"""
 
+[fill]
+symbol = ''
+
 [directory]
-style = "blue"
+style = "#91a8ba"
+truncation_length = 1
+truncation_symbol = ""
 
 [character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+success_symbol = "[❯](#d3869b)"
+error_symbol = "[❯](#ec6b64)"
+vimcmd_symbol = "[❮](#a9b665)"
 
 [git_branch]
 format = "[$branch]($style)"
-style = "bright-black"
+style = "#404344"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
+style = "#7daea3"
 conflicted = "​"
 untracked = "​"
 modified = "​"
@@ -35,12 +41,12 @@ stashed = "≡"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
+style = "#404344"
 
 [cmd_duration]
 format = "[$duration]($style) "
-style = "yellow"
+style = "#e0c080"
 
 [python]
 format = "[$virtualenv]($style) "
-style = "bright-black"
+style = "#404344"
