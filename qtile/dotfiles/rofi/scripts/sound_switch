@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+LANG="en_US.utf8"
+# Outputs have spaces in them, so let's make \n the IFS
+IFS=$'\n'
+
+# Make script independent on particular implementation of send client
+if command -v notify-send > /dev/null 2>&1; then
+    SEND="notify-send"
+elif command -v dunstify > /dev/null 2>&1; then
+    SEND="dunstify"
+else
+    SEND="/bin/false"
+fi
+
+# ───────────────────────────────────────────────────────────────
+#                       Rofi Setup
+# ───────────────────────────────────────────────────────────────
+rofi_cmd() {
+    rofi -dmenu \
+        -p "Select Output" \
+        -theme "$HOME/.config/rofi/settings/launcher/everforest.rasi"  # Adjust to your Rofi theme path
+}
+
+# ───────────────────────────────────────────────────────────────
+#                       Set Default Sink
+# ───────────────────────────────────────────────────────────────
+set_default_sink() {
+    desc="$1"  # The output device description passed from Rofi
+    # Figure out what the device name is based on the description passed
+    device=$(pactl list sinks | grep -C2 -F "Description: $desc" | grep Name | cut -d: -f2 | xargs)
+    # Try to set the default to the device chosen
+    if pactl set-default-sink "$device"; then
+        # if it worked, alert the user
+        $SEND -t 2000 -r 2 -u low "Activated: $desc"
+    else
+        # didn't work, critically alert the user
+        $SEND -t 2000 -r 2 -u critical "Error activating $desc"
+    fi
+}
+
+# ───────────────────────────────────────────────────────────────
+#                       Get List of Outputs
+# ───────────────────────────────────────────────────────────────
+get_output_list() {
+    pactl list sinks | grep -ie "Description:" | cut -d: -f2 | sort
+}
+
+# ───────────────────────────────────────────────────────────────
+#                          Main Execution
+# ───────────────────────────────────────────────────────────────
+# Get the list of outputs and pass them to Rofi for selection
+selected_output=$(get_output_list | rofi_cmd)
+
+# If a selection was made, set the default sink
+if [[ -n "$selected_output" ]]; then
+    set_default_sink "$selected_output"
+else
+    echo "No output selected, exiting..."
+fi
+
