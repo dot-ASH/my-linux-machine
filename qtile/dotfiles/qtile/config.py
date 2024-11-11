@@ -304,23 +304,24 @@ screens = [
                 widget.Image(
                     filename="~/.config/qtile/Assets/3.png",
                 ),
+                widget.Systray(background=dark_bg, padding=10, icon_size=15),
                 widget.TextBox(
-                    text="󰎇",
+                    text="󰎆",
                     font=font_main,
-                    fontsize=15,
+                    fontsize=14,
                     background=dark_bg,
-                    foreground=text,
+                    foreground=border,
                     mouse_callbacks={"Button1": search},
-                    padding=5,
+                    padding=10,
                 ),
                 widget.Mpris2(
                     background=dark_bg,
-                    max_chars=50,
+                    max_chars=40,
                     foreground=text,
                     font=font_main_bold,
                     fontsize=14,
+                    padding=10,
                 ),
-                widget.Systray(background=dark_bg, padding=10, icon_size=15),
                 widget.Image(
                     filename="~/.config/qtile/Assets/6.png",
                     background=bg,
@@ -345,11 +346,13 @@ screens = [
                     background=bg,
                 ),
                 widget.Net(
-                    format="↑ {down:.1f}{down_suffix}",
+                    format="↑ {down:>2.1f}{down_suffix}",
                     background=bg,
                     font=font_main_bold,
                     fontsize=15,
                     foreground=text,
+                    prefix="M",
+                    # update_interval=1,
                 ),
                 widget.Image(
                     filename="~/.config/qtile/Assets/2.png",
@@ -418,14 +421,13 @@ screens = [
             border_color="#3b4252",
             border_width=[0, 0, 0, 0],
             # t,r,b,l
-            margin=[min_gap * 2, min_gap * 3, min_gap * 1, min_gap * 3],
+            margin=[min_gap * 2, min_gap * 4, min_gap * 2, min_gap * 4],
         ),
         right=bar.Gap(min_gap * 2),
         bottom=bar.Gap(min_gap),
         left=bar.Gap(min_gap * 2),
     ),
 ]
-
 
 mouse = [
     Drag(

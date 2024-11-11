@@ -7,6 +7,8 @@ sudo apt install base-devel qtile pywal-git feh picom dunst zsh starship playerc
 # SNAP PACKAGES
 sudo snap install neovim
 
+sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
+
 ```
 
 ```

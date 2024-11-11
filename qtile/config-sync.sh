@@ -27,5 +27,8 @@ for ITEM in "${HOME_ITEMS[@]}"; do
     rsync -av "$SRC_DIR/$ITEM" "$DOT_DIR/"
 done
 
+rsync -av "${SRC_DIR}/.var/app/dev.vencord.Vesktop/config/vesktop/themes/theme.css" "${DOT_DIR}/utils/discord/"
+
+
 echo "Sync complete!"
 
