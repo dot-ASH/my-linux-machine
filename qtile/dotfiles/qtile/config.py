@@ -30,7 +30,7 @@ dark_bg = "#0F1212"
 bg = "#202222"
 accent = ""
 border = "#b7e4c7"
-text = "#c7b89d"
+text = "#d7dbc7"
 font_main = "CaskaydiaCove Nerd Font"
 font_main_bold = "CaskaydiaCove Nerd Font Bold"
 font_sc = "FiraCode Nerd Font"
@@ -260,7 +260,7 @@ screens = [
                     active=base04,
                     block_highlight_text_color=base09,
                     highlight_color=base02,
-                    inactive=dark_bg,
+                    # inactive=dark_bg,
                     foreground=base02,
                     background=bg,
                     this_current_screen_border=bg,
@@ -421,7 +421,7 @@ screens = [
             border_color="#3b4252",
             border_width=[0, 0, 0, 0],
             # t,r,b,l
-            margin=[min_gap * 2, min_gap * 4, min_gap * 2, min_gap * 4],
+            margin=[min_gap * 2, min_gap * 4, min_gap * 1, min_gap * 4],
         ),
         right=bar.Gap(min_gap * 2),
         bottom=bar.Gap(min_gap),
