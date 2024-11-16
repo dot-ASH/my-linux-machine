@@ -15,6 +15,7 @@ map("v", "<S-Down>", "<nop>", { desc = "Shift Down Disable", noremap = true, sil
 map("n", "<C-S-v>", '"0p', { desc = "Paste from yank register", noremap = true, silent = true })
 map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "new buffer" })
 map("n", "<leader>ba", "<cmd>bufdo bd<CR>", { desc = "close all buffer" })
+map("n", "<leader>v", "<C-w>v", { desc = "Open window vertically" })
 
 -- Project Management
 map("n", "<leader>fp", "<CMD> ProjectMgr<CR>", { desc = "Open Projects" })

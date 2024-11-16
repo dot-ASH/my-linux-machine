@@ -423,6 +423,8 @@ screens = [
             # t,r,b,l
             margin=[min_gap * 2, min_gap * 4, min_gap * 1, min_gap * 4],
         ),
+        wallpaper="~/Wallpaper/1.jpg",
+        wallpaper_mode="fill",
         right=bar.Gap(min_gap * 2),
         bottom=bar.Gap(min_gap),
         left=bar.Gap(min_gap * 2),
