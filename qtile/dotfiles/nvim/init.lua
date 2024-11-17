@@ -11,13 +11,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 vim.opt.relativenumber = true
--- vim.cmd [[
--- augroup kitty_mp
---     autocmd!
---     au VimLeave * :silent !kitty @ set-spacing padding=20 margin=10
---     au VimEnter * :silent !kitty @ set-spacing padding=0 margin=0
--- augroup END
--- ]]
+vim.opt.termguicolors = true
+vim.api.nvim_set_hl(0, "Comment", { italic = true })
 
 local lazy_config = require("configs.lazy")
 

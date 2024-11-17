@@ -293,13 +293,15 @@ screens = [
                 widget.Image(
                     filename="~/.config/qtile/Assets/4.png",
                 ),
-                widget.WindowName(
+                widget.WindowTabs(
                     background=bg,
-                    font=font_main_bold,
+                    font=font_main,
                     fontsize=14,
                     empty_group_string="Desktop",
-                    max_chars=130,
+                    max_chars=80,
                     foreground=text,
+                    parse_text=lambda text: text.split(" - ")[-1],
+                    selected=("<b>", "</b>"),
                 ),
                 widget.Image(
                     filename="~/.config/qtile/Assets/3.png",
@@ -316,7 +318,7 @@ screens = [
                 ),
                 widget.Mpris2(
                     background=dark_bg,
-                    max_chars=40,
+                    max_chars=50,
                     foreground=text,
                     font=font_main_bold,
                     fontsize=14,
