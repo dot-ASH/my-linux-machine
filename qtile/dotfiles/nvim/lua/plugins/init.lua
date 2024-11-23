@@ -45,10 +45,10 @@ return {
 				"black",
 				"pyright",
 				"mypy",
+				"flutter-tools",
 			},
 		},
 	},
-
 	{
 		"windwp/nvim-ts-autotag",
 		ft = {
@@ -117,5 +117,77 @@ return {
 			},
 		},
 		opts = { theme = "dark", app = "browser" },
+	},
+
+	{
+		"akinsho/flutter-tools.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"stevearc/dressing.nvim",
+		},
+		config = function()
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+			require("flutter-tools").setup({
+				debugger = {
+					enabled = true,
+					run_via_dap = true,
+				},
+				outline = { auto_open = false },
+				decorations = {
+					statusline = { device = true, app_version = true },
+				},
+				widget_guides = { enabled = true },
+				dev_log = { enabled = true, open_cmd = "tabedit" },
+				lsp = {
+					color = {
+						enabled = true,
+						background = true,
+						virtual_text = true,
+					},
+					settings = {
+						showTodos = true,
+						renameFilesWithClasses = "prompt",
+					},
+					capabilities = capabilities,
+				},
+			})
+		end,
+	},
+	{
+		"mfussenegger/nvim-dap",
+		config = function(_, opts)
+			require("custom.dap")
+
+			-- Basic debugging keymaps
+			vim.keymap.set("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>")
+			vim.keymap.set("n", "<leader>dr", "<cmd>DapContinue<CR>")
+			vim.keymap.set("n", "<leader>dl", "<cmd>DapStepOver<CR>")
+			vim.keymap.set("n", "<leader>dj", "<cmd>DapStepInto<CR>")
+			vim.keymap.set("n", "<leader>dk", "<cmd>DapStepOut<CR>")
+		end,
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = "mfussenegger/nvim-dap",
+		config = function()
+			local dap = require("dap")
+			local dapui = require("dapui")
+			dapui.setup()
+
+			dap.listeners.after.event_initialized["dapui_config"] = function()
+				dapui.open()
+			end
+
+			dap.listeners.before.event_terminated["dapui_config"] = function()
+				dapui.close()
+			end
+
+			dap.listeners.before.event_exited["dapui_config"] = function()
+				dapui.close()
+			end
+		end,
 	},
 }

@@ -7,7 +7,7 @@ from time import sleep
 
 mod = "mod4"
 terminal = "kitty"
-min_gap = 3
+min_gap = 2
 
 base00 = "#1e2122"
 base01 = "#202222"
@@ -423,12 +423,12 @@ screens = [
             border_color="#3b4252",
             border_width=[0, 0, 0, 0],
             # t,r,b,l
-            margin=[min_gap * 2, min_gap * 4, min_gap * 1, min_gap * 4],
+            margin=[min_gap * 3, min_gap * 3, min_gap * 2, min_gap * 3],
         ),
-        wallpaper="~/Wallpaper/1.jpg",
+        wallpaper="~/Wallpaper/12.jpg",
         wallpaper_mode="fill",
         right=bar.Gap(min_gap * 2),
-        bottom=bar.Gap(min_gap),
+        bottom=bar.Gap(min_gap * 2),
         left=bar.Gap(min_gap * 2),
     ),
 ]

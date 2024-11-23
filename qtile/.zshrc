@@ -34,8 +34,9 @@ setopt appendhistory
 #{ CUSTOM
 
 # DESKTOP
+bindkey '^H' backward-kill-word
 export WEBKIT_DISABLE_DMABUF_RENDERER=1
-
+export MANPAGER='nvim +Man!'
 # ANDROID
 export JAVA_HOME=/opt/android-studio/jbr
 export ANDROID_HOME="$HOME/Android/Sdk"
@@ -74,6 +75,9 @@ source <(ng completion script)
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+
+# FLUTTER
+export PATH="$PATH:$HOME/flutter/bin"
 
 #} CUSTOM
 
