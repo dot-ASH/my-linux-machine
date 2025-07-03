@@ -46,6 +46,8 @@ return {
 				"pyright",
 				"mypy",
 				"flutter-tools",
+				"gopls",
+				"svelte-language-server",
 			},
 		},
 	},
@@ -156,6 +158,7 @@ return {
 			})
 		end,
 	},
+
 	{
 		"mfussenegger/nvim-dap",
 		config = function(_, opts)
@@ -169,6 +172,7 @@ return {
 			vim.keymap.set("n", "<leader>dk", "<cmd>DapStepOut<CR>")
 		end,
 	},
+
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = "mfussenegger/nvim-dap",
@@ -188,6 +192,135 @@ return {
 			dap.listeners.before.event_exited["dapui_config"] = function()
 				dapui.close()
 			end
+		end,
+	},
+
+	{
+		"tpope/vim-fugitive",
+	},
+
+	{
+		"lewis6991/gitsigns.nvim",
+		event = "BufReadPre",
+		config = function()
+			require("gitsigns").setup({
+				on_attach = function(bufnr)
+					local gs = require("gitsigns")
+
+					local function map(mode, l, r, opts)
+						opts = opts or {}
+						opts.buffer = bufnr
+						vim.keymap.set(mode, l, r, opts)
+					end
+					-- Preview hunk
+					map("n", "<leader>gp", gs.preview_hunk, { desc = "Preview Hunk" })
+
+					-- Blame current line
+					map("n", "<leader>gk", function()
+						gs.blame_line({ full = true })
+					end, { desc = "Blame Current Line" })
+				end,
+			})
+		end,
+	},
+
+	{
+		"Exafunction/codeium.vim",
+		event = "BufEnter",
+		config = function()
+			vim.keymap.set("i", "<C-'>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true, silent = true })
+
+			vim.keymap.set("i", "<TAB>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true, silent = true })
+		end,
+	},
+
+	{ -- Collection of various small independent plugins/modules
+		"echasnovski/mini.nvim",
+		config = function()
+			require("mini.ai").setup({ n_lines = 500 })
+			require("mini.surround").setup()
+		end,
+	},
+
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
+
+	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "LspAttach", -- Important: Load when LSP attaches
+		config = function()
+			require("tiny-inline-diagnostic").setup()
+			-- Disable ALL virtual text globally (must be before LSP starts)
+			vim.diagnostic.config({ virtual_text = false })
+		end,
+	},
+
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		cmd = { "Trouble" },
+		opts = {}, -- Use default options
+		keys = {
+			{
+				"<leader>cx",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Toggle Diagnostics",
+			},
+			{
+				"<leader>cd",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Toggle Document Diagnostics",
+			},
+			{
+				"<leader>cq",
+				"<cmd>Trouble quickfix toggle<cr>",
+				desc = "Toggle Quickfix List",
+			},
+			{
+				"<leader>cl",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Toggle Location List",
+			},
+			{
+				"<leader>cr",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "Toggle LSP References",
+			},
+		},
+	},
+
+	{ -- Linting
+		"mfussenegger/nvim-lint",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			local lint = require("lint")
+			lint.linters_by_ft = {
+				markdown = { "markdownlint" },
+				typescript = { "biomejs" },
+				typescriptreact = { "biomejs" },
+			}
+			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+				group = lint_augroup,
+				callback = function()
+					if vim.opt_local.modifiable:get() then
+						lint.try_lint()
+					end
+				end,
+			})
 		end,
 	},
 }

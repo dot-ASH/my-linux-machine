@@ -12,10 +12,11 @@ map("n", "<A-Up>", "<CMD>m -2<CR>", { desc = "Move line up" })
 map("n", "<A-Down>", "<CMD>m +1<CR>", { desc = "Move line down" })
 map("n", "<C-z>", "<nop>", { desc = "Disable Ctrl+Z in normal mode", noremap = true, silent = true })
 map("v", "<S-Down>", "<nop>", { desc = "Shift Down Disable", noremap = true, silent = true })
-map("n", "<C-S-v>", '"0p', { desc = "Paste from yank register", noremap = true, silent = true })
+map("n", "<C-S-v>", "<S-p>", { desc = "Paste from yank register", noremap = true, silent = true })
 map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "new buffer" })
 map("n", "<leader>ba", "<cmd>bufdo bd<CR>", { desc = "close all buffer" })
 map("n", "<leader>v", "<C-w>v", { desc = "Open window vertically" })
+map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Toggle Code Action" })
 
 -- Project Management
 map("n", "<leader>fp", "<CMD> ProjectMgr<CR>", { desc = "Open Projects" })
