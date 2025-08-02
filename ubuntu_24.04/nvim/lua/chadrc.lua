@@ -6,11 +6,12 @@
 local M = {}
 
 M.base46 = {
-  theme = "gruvchad",
-  -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
+  theme = "kanagawa-dragon",
+
+  hl_override = {
+    Comment = { italic = true },
+    ["@comment"] = { italic = true },
+  },
 }
 
 return M

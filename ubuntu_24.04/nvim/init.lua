@@ -1,6 +1,9 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
+vim.opt.wrap = true
+vim.opt.breakindent = true
+
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
@@ -11,6 +14,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 vim.opt.relativenumber = true
+vim.opt.termguicolors = true
+vim.api.nvim_set_hl(0, "Comment", { italic = true })
 
 local lazy_config = require "configs.lazy"
 

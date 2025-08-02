@@ -1,18 +1,27 @@
 local options = {
   formatters_by_ft = {
+    javascript = { "biome" },
+    typescript = { "biome" },
+    javascriptreact = { "biome" },
+    typescriptreact = { "biome" },
+    json = { "biome" },
+    html = { "biome" },
+    css = { "biome" },
     lua = { "stylua" },
-    css = { "prettier" },
-    html = { "prettier" },
-    javascript = { "prettier" },
-    typescript = { "prettier" },
     python = { "black" },
-    json = { "prettier" },
+    go = { "gofumpt", "goimports_reviser", "golines" },
   },
 
   format_on_save = {
-    -- These options will be passed to conform.format()
-    timeout_ms = 500,
+    timeout_ms = 3000,
     lsp_fallback = true,
+  },
+  formatters = {
+    biome = {
+      command = "biome",
+      args = { "format", "--stdin-file-path", "$FILENAME" },
+      stdin = true,
+    },
   },
 }
 
